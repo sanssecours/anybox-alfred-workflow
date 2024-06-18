@@ -138,6 +138,8 @@ def get_links():
             list = json.loads(response.read())
             result = []
             for link in list:
+                if not link["tags"]:  # Ignore links without tags
+                    continue
                 icon_url = (
                     "http://127.0.0.1:6391/images/" + link["id"] + "/icon"
                 )
